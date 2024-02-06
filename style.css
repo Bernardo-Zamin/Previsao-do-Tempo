@@ -6,25 +6,30 @@
     box-sizing: border-box;
 }
 
-body{
+body {
+    background: linear-gradient(to top, #0ca4db, #35fe7b);
+    background-size: cover;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #0ca4db;
 }
 
 .container{
     position: relative;
-    width: 400px;
+    width: 500px;
     height: 105px;
-    background: #fff;
+    background: #ffffff;
     padding: 28px 32px;
     overflow: hidden;
-    border-radius: 18px;
-    font-family: 'Roboto', sans-serif;
+    border-radius: 28px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 28px;
     transition: 0.6s ease-out;
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.2);
+    text-align: center; 
 }
+
 
 .box-de-pesquisa{
     width: 100%;
@@ -32,15 +37,19 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
+
 }
 
 .box-de-pesquisa input{
     color: #06283D;
     width: 80%;
-    font-size: 24px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 28px;
     font-weight: 500;
     text-transform: uppercase;
     padding-left: 32px;
+    text-align: center; 
 }
 
 .box-de-pesquisa input::placeholder{
@@ -77,7 +86,7 @@ body{
 }
 
 .box-tempo img{
-    width: 60%;
+    width: 50%;
     margin-top: 30px;
 }
 
@@ -98,7 +107,7 @@ body{
 
 .box-tempo .description{
     color: #06283D;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: 500;
     text-transform: capitalize;
 }
@@ -142,7 +151,7 @@ body{
 
 .detalhes-do-tempo p{
     color: #06283D;
-    font-size: 14px;
+    font-size: 22px;
     font-weight: 500;
 }
 
