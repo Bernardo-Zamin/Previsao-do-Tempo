@@ -101,3 +101,60 @@ function updateWeatherWithCurrentLocation() {
 
 // Adicionar ouvinte de evento ao ícone de localização
 locationIcon.addEventListener('click', updateWeatherWithCurrentLocation);
+
+// Função para atualizar o tempo baseado na localização atual
+function updateWeatherWithCurrentLocation() {
+    if (!navigator.geolocation) {
+        alert('Geolocalização não é suportada pelo seu navegador');
+        return;
+    }
+
+    function success(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        const APIKey = 'f3d6f1813a7f4aee7082b0e33744d587';
+
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${APIKey}&lang=pt_br`)
+            .then(response => response.json())
+            .then(json => {
+                updateWeatherInfo(json);
+
+                // Utiliza setTimeout para esperar a animação das informações do tempo
+                setTimeout(() => {
+                    // Depois de um atraso, atualiza o nome da cidade na barra de pesquisa
+                    updateCityNameBasedOnLocation(latitude, longitude);
+                }, 1000); // Ajuste o tempo de atraso conforme necessário
+            })
+            .catch(error => {
+                console.error('Erro ao obter o tempo para a localização atual', error);
+            });
+    }
+
+    function error() {
+        alert('Não foi possível obter a sua localização');
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error);
+}
+
+// Função JavaScript para atualizar a cidade na barra de pesquisa com efeito suave
+function updateCityNameBasedOnLocation(latitude, longitude) {
+    const inputLocalizacao = document.querySelector('.input-localizacao');
+
+    fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
+        .then(response => response.json())
+        .then(data => {
+            const cityName = data.address.city || "Cidade não encontrada";
+
+            // Limpa o campo de entrada e inicia a transição
+            // ... (dentro da função updateCityNameBasedOnLocation)
+            inputLocalizacao.classList.add('fade-in');
+
+            setTimeout(() => {
+                inputLocalizacao.value = cityName;
+                inputLocalizacao.classList.remove('fade-in');
+            }, 20); // Um breve atraso antes de aplicar a mudança de valor e remover a classe de animação.
+        })
+        .catch(error => console.error('Erro ao obter o nome da cidade:', error));
+}

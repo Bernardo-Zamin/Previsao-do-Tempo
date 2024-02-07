@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     border: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-    background: linear-gradient(to top, #0ca4db, #35fe7b);
+    background: linear-gradient(to top, #0ca4db, #d9ee1b);
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -15,7 +15,7 @@ body {
     justify-content: center;
 }
 
-.container{
+.container {
     position: relative;
     width: 500px;
     height: 105px;
@@ -27,21 +27,10 @@ body {
     font-size: 28px;
     transition: 0.6s ease-out;
     box-shadow: 0 50px 100px rgba(0, 0, 0, 0.2);
-    text-align: center; 
+    text-align: center;
 }
 
-
-.box-de-pesquisa{
-    width: 100%;
-    height: min-content;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
-
-}
-
-.box-de-pesquisa input{
+.box-de-pesquisa input {
     color: #06283D;
     width: 80%;
     font-family: 'Inconsolata', monospace;
@@ -49,17 +38,39 @@ body {
     font-weight: 500;
     text-transform: uppercase;
     padding-left: 32px;
-    text-align: center; 
+    text-align: center;
+
 }
 
-.box-de-pesquisa input::placeholder{
+.box-de-pesquisa {
+    width: 100%;
+    height: min-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+}
+
+.box-de-pesquisa input {
+    color: #06283D;
+    width: 80%;
+    font-family: 'Inconsolata', monospace;
+    font-size: 28px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-left: 32px;
+    text-align: center;
+}
+
+.box-de-pesquisa input::placeholder {
     font-size: 20px;
     font-weight: 500;
     color: #06283D;
     text-transform: capitalize;
 }
 
-.box-de-pesquisa button{
+.box-de-pesquisa button {
     cursor: pointer;
     width: 50px;
     height: 50px;
@@ -70,27 +81,27 @@ body {
     transition: 0.4s ease;
 }
 
-.box-de-pesquisa button:hover{
+.box-de-pesquisa button:hover {
     color: #fff;
     background: #06283D;
 }
 
-.box-de-pesquisa i{
+.box-de-pesquisa i {
     position: absolute;
     color: #06283D;
     font-size: 28px;
 }
 
-.box-tempo{
+.box-tempo {
     text-align: center;
 }
 
-.box-tempo img{
+.box-tempo img {
     width: 50%;
     margin-top: 30px;
 }
 
-.box-tempo .temperature{
+.box-tempo .temperature {
     position: relative;
     color: #06283D;
     font-size: 4rem;
@@ -99,63 +110,64 @@ body {
     margin-left: -16px;
 }
 
-.box-tempo .temperature span{
+.box-tempo .temperature span {
     position: absolute;
     margin-left: 4px;
     font-size: 1.5rem;
 }
 
-.box-tempo .description{
+.box-tempo .description {
     color: #06283D;
     font-size: 25px;
     font-weight: 500;
     text-transform: capitalize;
 }
 
-.detalhes-do-tempo{
+.detalhes-do-tempo {
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
 }
 
-.detalhes-do-tempo .humidity, .detalhes-do-tempo .wind{
+.detalhes-do-tempo .humidity,
+.detalhes-do-tempo .wind {
     display: flex;
     align-items: center;
     width: 50%;
     height: 100px;
 }
 
-.detalhes-do-tempo .humidity{
+.detalhes-do-tempo .humidity {
     padding-left: 20px;
     justify-content: flex-start;
 }
 
-.detalhes-do-tempo .wind{
+.detalhes-do-tempo .wind {
     padding-right: 20px;
     justify-content: flex-end;
 }
 
-.detalhes-do-tempo i{
+.detalhes-do-tempo i {
     color: #06283D;
     font-size: 26px;
     margin-right: 10px;
     margin-top: 6px;
 }
 
-.detalhes-do-tempo span{
+.detalhes-do-tempo span {
     color: #06283D;
     font-size: 22px;
     font-weight: 500;
 }
 
-.detalhes-do-tempo p{
+.detalhes-do-tempo p {
     color: #06283D;
     font-size: 22px;
     font-weight: 500;
 }
 
-.not-found{
+.not-found {
     width: 100%;
     text-align: center;
     margin-top: 50px;
@@ -164,28 +176,57 @@ body {
     display: none;
 }
 
-.not-found img{
-    width: 60%;
+.not-found img {
+    width: 50%;
 }
 
-.not-found p{
+.not-found p {
     color: #06283D;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
     margin-top: 12px;
 }
 
-.box-tempo, .detalhes-do-tempo{
+/* Adiciona este estilo no seu arquivo style.css */
+.input-localizacao-animacao {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+
+/* Adicione no seu arquivo style.css */
+.input-localizacao::after {
+    content: attr(data-city);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: block;
+    /* ou inline, dependendo de como você quer que apareça */
+}
+
+
+.box-tempo,
+.detalhes-do-tempo {
     scale: 0;
     opacity: 0;
 }
 
-.fadeIn{
-    animation: 0.5s fadeIn forwards;
+.input-localizacao {
+    transition: opacity 1.0s ease-in-out;
+}
+
+.input-localizacao.fade-in {
+    opacity: 0; /* Começa transparente */
+    transition: opacity 2s ease-in-out; /* Aumenta a duração para 2 segundos */
+}
+
+
+
+.fadeIn {
+    animation: 1.0s fadeIn forwards;
     animation-delay: 0.5s;
 }
 
-@keyframes fadeIn{
+@keyframes fadeIn {
     to {
         scale: 1;
         opacity: 1;
